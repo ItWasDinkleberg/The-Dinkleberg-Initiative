@@ -12,7 +12,7 @@ Welcome to my prompt engineering vault—each file is a crafted tool, designed f
 
 ## 🗂 Prompt Library
 
-- [Buy This Now](prompts/buy_this_now.md) — Create energetic, converting product descriptions in seconds.
+- [Buy This Now](prompts/product-descriptions/buy_this_now.md) — Create energetic, converting product descriptions in seconds.
 
 ---
 
