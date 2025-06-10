@@ -6,6 +6,22 @@ This repo is where I build useful, weird, and sometimes absurd AI tools. It’s 
 
 ---
 
+# 👍 Completed Projects
+
+A growing collection of useful, chaotic, and highly effective prompts created by the legendary Dinkleberg.
+
+## 🗂 Prompt Library
+
+- [Buy This Now](prompts/buy_this_now.md) — Create energetic, persuasive product descriptions in seconds.
+
+---
+
+## 🛠️ How to Use
+
+Each prompt is saved as a `.md` file and can be copied directly into your favorite AI tool!
+
+---
+
 ## 🎯 Prompt Projects
 
 | Prompt File                     | Purpose                                                                 |
@@ -22,8 +38,11 @@ This repo is where I build useful, weird, and sometimes absurd AI tools. It’s 
 ## ⚙️ Tools I'm Currently Using
 
 - ChatGPT (the standard one, for now)
+- Claude
+- Poe
 - GitHub (this!)
-- Google Docs, Notion (casual use)
+- Google Docs, Keep (casual use)
+- PromptPerfect
 - Copious caffeine and questionable sleep habits
 
 ---
