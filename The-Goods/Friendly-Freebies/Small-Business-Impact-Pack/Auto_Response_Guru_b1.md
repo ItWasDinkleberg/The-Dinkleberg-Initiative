@@ -34,6 +34,7 @@ Optional Details: {BUSINESS HOURS | LINKS | TYPICAL REPLY TIME | SPECIAL OFFERS}
 ### ✅️ **Example Input:**
 
 ```
+Business Name: Cassidy's Candle Emporium
 Business Type: Handmade candle shop
 Tone: Friendly & casual
 Reason: After-hours
