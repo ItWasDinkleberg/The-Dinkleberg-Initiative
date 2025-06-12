@@ -4,7 +4,7 @@
 
 ---
 
-### 💼 Who This Is For:
+### 💼 Who This Is For: 
 - Small business owners juggling a million things
 - Etsy, Shopify, or service-based biz folks who can't respond instantly
 - Anyone wanting to sound pro, even when they're AFK
