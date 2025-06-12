@@ -12,7 +12,7 @@ Welcome to my [prompt engineering vault](The-Goods)! Each file is a crafted tool
 
 ## 🗂 Prompt Library
 
-- [Buy This Now](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/buy_this_now_v1.md) — Create energetic, converting product descriptions in seconds.
+- [Buy This Now](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/Buy_This_Now_v1.md) — Create energetic, converting product descriptions in seconds.
 
 ---
 
