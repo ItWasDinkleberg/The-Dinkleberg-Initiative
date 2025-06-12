@@ -16,7 +16,7 @@ Fill in the blanks for your tone, situation, and audience. Get a ready-to-copy r
 
 ---
 
-### 🧠 Prompt Template:
+### 🧠 Prompt:
 
 ```
 You are a customer service and copywriting expert. Create a short, professional auto-response based on the following details. Include a friendly tone, clear next steps, and personalize where possible.
