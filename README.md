@@ -8,11 +8,11 @@ This repo is where I build useful, weird, and sometimes absurd AI tools. It’s 
 
 # 👍 Completed Projects
 
-Welcome to my prompt engineering vault—each file is a crafted tool, designed for real-world results. This repo will grow into a full library of commands, templates, and creative tools for marketing, writing, and product creation.
+Welcome to my [prompt engineering vault](The-Goods)! Each file is a crafted tool, designed for real-world results. This repo will grow into a full library of commands, templates, and creative tools for marketing, writing, and product creation.
 
 ## 🗂 Prompt Library
 
-- [Buy This Now](prompts/product-descriptions/buy_this_now.md) — Create energetic, converting product descriptions in seconds.
+- [Buy This Now](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/buy_this_now_v1.md) — Create energetic, converting product descriptions in seconds.
 
 ---
 
