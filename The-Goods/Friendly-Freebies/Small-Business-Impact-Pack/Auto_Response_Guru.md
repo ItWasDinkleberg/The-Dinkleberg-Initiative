@@ -1,6 +1,6 @@
 # 🤖 Auto-Response Guru
 
-**Goal:** Instantly generate smart, friendly, and on-brand auto-responses for messages, contact forms, or missed chats â€” so you never leave leads hangin'.
+**Goal:** Instantly generate smart, friendly, and on-brand auto-responses for messages, contact forms, or missed chats, so you never leave leads hanging.
 
 ---
 
