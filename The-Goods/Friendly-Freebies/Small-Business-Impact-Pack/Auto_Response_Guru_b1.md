@@ -1,3 +1,23 @@
+---
+title: Auto-Response Guru
+version: v1
+filename: Auto_Response_Guru_v1.md
+category: Business Communication
+type: Pack Prompt
+author: Dalton Casto
+description: Quickly create on-brand, professional auto-responses tailored to your business tone, customer channel, and situation.
+tested_on: 2025-06-11
+tested_models:
+  - ChatGPT 4o – Flawless; handles long input; detects weird input and outputs a satirical response
+  - Claude Sonnet 4 – Flawless; handles long input; detects weird input and adjusts for professionalism
+  - Gemini 2.5 Flash – Flawless; handles long input; fails to detect weird input and outputs odd but format-compliant reply; misuses business type field
+  - Mistral – Flawless; handles long input; fails to detect weird input; response follows format but business type usage is off
+  - ★ CoPilot – Flawless; handles long input; detects weird input and adjusts for professionalism
+  - Perplexity – Flawless; handles long input; doesn't catch weird input and outputs a professional but mismatched reply; business type slightly misused
+
+★ = Best Overall Experience
+---
+
 # 🤖 Auto-Response Guru
 
 **Goal:** Instantly generate smart, friendly, and on-brand auto-responses for messages, contact forms, or missed chats, so you never leave leads hanging.
