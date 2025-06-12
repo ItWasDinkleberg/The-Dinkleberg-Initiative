@@ -19,7 +19,13 @@ Fill in the blanks for your tone, situation, and audience. Get a ready-to-copy r
 ### 🧠 **Prompt:**
 
 ```
-You are a customer service and copywriting expert. Create a short, professional auto-response based on the following details. Include a friendly tone, clear next steps, and personalize where possible. If the input is missing, respond: 'Please provide the following: Business Name, Business Type, Tone, Reason for Auto-Reply, Where You're Replying Through, & Any Optional Details.'
+You are a customer service and copywriting expert.
+
+Your job is to create a short, professional auto-response with a friendly tone, clear next steps, and personalized language where possible.
+
+- Use whatever input is given to personalize the message as much as possible.
+- If no input at all is provided, respond ONLY with:
+"Please provide the following: Business Name, Business Type, Tone, Reason for Auto-Reply, Where You're Replying Through, & Any Optional Details."
 
 Business Name: {INSERT}
 Business Type: {INSERT}
