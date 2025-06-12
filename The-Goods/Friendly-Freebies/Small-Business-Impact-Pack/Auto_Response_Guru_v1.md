@@ -14,8 +14,7 @@ tested_models:
   - Mistral – Flawless; handles long input; fails to detect weird input; response follows format but business type usage is off
   - ★ CoPilot – Flawless; handles long input; detects weird input and adjusts for professionalism
   - Perplexity – Flawless; handles long input; doesn't catch weird input and outputs a professional but mismatched reply; business type slightly misused
-
-★ = Best Overall Experience
+Key: ★ = Best Overall Experience
 ---
 
 # 🤖 Auto-Response Guru
