@@ -56,7 +56,7 @@ Optional Details: {BUSINESS HOURS | LINKS | TYPICAL REPLY TIME | SPECIAL OFFERS}
 
 ---
 
-### ✅️ **Example Input:**
+### 📥 **Example Input:**
 
 ```
 Business Name: Cassidy's Candle Emporium
@@ -65,6 +65,23 @@ Tone: Friendly & casual
 Reason: After-hours
 Channel: Website contact form
 Details: We usually reply within 24 hours. Include link to FAQ and 10% off code.
+```
+
+---
+
+### 📤 **Example Output:**
+
+```
+Subject: Thanks for reaching out to Cassidy's Candle Emporium! 🕯️
+
+Hey there!
+
+Thanks so much for getting in touch with us at Cassidy's Candle Emporium. We're currently away from the shop, but your message made it safely to our inbox! We usually respond within 24 hours, so hang tight — we'll be with you soon.
+
+While you wait, feel free to check out our FAQ page for quick answers, or enjoy 10% off your next order with code: GLOW10 ✨
+
+Talk soon,
+Cassidy & the Candle Crew
 ```
 
 ---
