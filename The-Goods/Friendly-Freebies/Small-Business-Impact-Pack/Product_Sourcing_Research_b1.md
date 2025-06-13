@@ -55,9 +55,9 @@ Products must be sourced from:
 
 4. Use this table format:
 
-| # | Product Name | Supplier URL | Why It's Trending | Suggested Marketing Hook | Trend Risk Level |
-|---|--------------|---------------|--------------------|---------------------------|-------------------|
-| 1 | Example: Mini Projector | https://example.com | Gained traction from viral TikToks | “Your pocket-sized home theater. Watch Netflix anywhere!” | Moderate |
+| # | Product Name | Supplier URL | Why It's Trending | Suggested Marketing Hook | Trend Risk Level | Profit Margin | Shipping Costs And Time | Product Quality | Supplier Reliability | Customer Reviews | Competitive Analysis | Seasonal Trends |
+|---|--------------|---------------|--------------------|---------------------------|-------------------|---------------|--------------------------|------------------|-----------------------|------------------|------------------------|-----------------|
+| 1 | Example: Mini Projector | https://example.com | Gained traction from viral TikToks | “Your pocket-sized home theater. Watch Netflix anywhere!” | Moderate | Buy for $30, sell for $75 = **60%** margin | $5 shipping, 7–10 days from China | 4.5/5 stars average rating | Ships 1k+ units/mo with <1% defect rate | “Love it! Great picture quality for the price.” | 12 sellers on Amazon, 4 with similar price | Peaks during holidays & back-to-school season |
 
 ✅ All products verified via live web search for 2025 sourcing and marketing viability.
 
