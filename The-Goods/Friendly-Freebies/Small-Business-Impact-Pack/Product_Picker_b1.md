@@ -20,7 +20,6 @@ Provide this prompt to an AI tool with browsing capabilities or conduct the rese
 
 ```
 You are a senior eCommerce strategist and product sourcing analyst with expertise in identifying trending, profitable, and easy-to-market products. Your task is to generate a curated list of 10 high-potential products currently available from reputable global dropshipping suppliers.
-```
 
 ---
 
@@ -83,3 +82,4 @@ After completion, suggest **2 ways** the list could be improved with:
 - More time  
 - Customer feedback  
 - Access to historical sales data
+```
