@@ -50,6 +50,7 @@ You are a world-class copywriter and viral content strategist. Your task is to w
 
 7. (Optional) For multi-post campaigns:
    - Ask: “Would you like a 3-post series, story arc, or cross-platform rollout plan?”
+```
 
 ---
 
@@ -57,7 +58,7 @@ You are a world-class copywriter and viral content strategist. Your task is to w
 - Single prompt output: ~15 seconds  
 - Campaign series (3–5 posts): ~1 minute  
 - Add-on platform rewrites: ~30 seconds each
-```
+
 ---
 
 ### 📥 **Example Input:**
