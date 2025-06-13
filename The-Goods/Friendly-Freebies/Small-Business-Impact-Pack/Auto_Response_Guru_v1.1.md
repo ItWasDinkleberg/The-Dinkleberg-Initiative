@@ -1,6 +1,6 @@
 ---
 title: Auto-Response Guru
-version: v1
+version: v1.1
 filename: Auto_Response_Guru_v1.md
 category: Business Communication
 type: Pack Prompt
