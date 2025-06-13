@@ -12,7 +12,7 @@ Welcome to my [prompt engineering vault](The-Goods)! Each file is a crafted tool
 
 ## 🗂 Prompt Library
 
-- [Buy This Now v1](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/Buy_This_Now_v1.md) — Create energetic, converting product descriptions in seconds.
+- [Buy This Now v2](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/Buy_This_Now_v2.md) — Create energetic, converting product descriptions in seconds.
 - [Auto-Response Guru v1.1](The-Goods/Friendly-Freebies/Small-Business-Impact-Pack/Auto_Response_Guru_v1.1.md) — Instantly generate smart, on-brand auto-responses for missed messages, contact forms, and more.
 
 ---
