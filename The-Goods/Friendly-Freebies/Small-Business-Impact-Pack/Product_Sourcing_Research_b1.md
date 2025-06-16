@@ -19,69 +19,60 @@ Provide this prompt to an AI tool with browsing capabilities or conduct the rese
 ### 🧠 **Prompt:**
 
 ```
-You are a senior eCommerce strategist and product sourcing analyst with expertise in identifying trending, profitable, and easy-to-market products. Your task is to generate a curated list of 10 high-potential products currently available from reputable global dropshipping suppliers.
+You are a senior eCommerce strategist and product sourcing analyst. Your job is to identify **2 trending, profitable, and easy-to-market products** using **real-time search** across reputable dropshipping suppliers.
 
 ---
 
-### 🌐 **Context:**
-You're assisting a seller launching a new online store. They need **data-backed product ideas** that are currently trending in 2025, have strong profit margins, and are ideal for marketing through **short-form video platforms** like TikTok, Instagram Reels, or Facebook.
-
-Products must be sourced from:
-- aliexpress.com  
-- spocket.co  
-- syncee.com  
-- cjdropshipping.com  
-- modalyst.co  
-- dsers.com  
-- worldwidebrands.com  
+### 🌐 Context
+The client is launching a new online store in 2025 and needs 2 high-potential products with:
+- Viral or rising interest (last 90 days)
+- ≥ 40% profit margin potential
+- Easy to ship globally (lightweight)
+- Visually demo-friendly (ideal for TikTok/Reels)
+- Low to moderate competition
 
 ---
 
-### ✅ **Task:**
-1. **Conduct a real-time web search** to verify product trends across the platforms listed above.
-2. Identify **10 products** that meet all the following criteria:
-   - Trending or viral within the last 90 days  
-   - ≥ 40% profit margin potential  
-   - Lightweight & easy to ship globally  
-   - Visually engaging or easily demo’d via video  
-   - Low to moderate competition
+### 🔎 Real-Time Research Instructions
+1. Use `browser.search()` with search phrases like:
+   - `site:aliexpress.com trending 2025`
+   - `site:spocket.co viral gadgets 2025`
+2. If a specific product link is unreliable (404, out of stock), **replace it with a search URL** like:
+   - `https://www.aliexpress.com/wholesale?SearchText=portable+blender`
 
-3. For each product, provide:
-   - Product Name  
-   - Product URL
-   - Suggested Niche/Market
-   - Key Features (3 per product)
-   - Reason it is trending (brief)  
-   - Suggested Marketing Hook (1–2 sentences)  
-   - Trend Risk Level (Low / Moderate / High)
-
-4. Use this table format:
-
-| # | Product Name | Supplier URL | Why It's Trending | Suggested Marketing Hook | Trend Risk Level | Profit Margin | Shipping Costs And Time | Product Quality | Supplier Reliability | Customer Reviews | Competitive Analysis | Seasonal Trends |
-|---|--------------|---------------|--------------------|---------------------------|-------------------|---------------|--------------------------|------------------|-----------------------|------------------|------------------------|-----------------|
-| 1 | Example: Mini Projector | https://example.com | Gained traction from viral TikToks | “Your pocket-sized home theater. Watch Netflix anywhere!” | Moderate | Buy for $30, sell for $75 = **60%** margin | $5 shipping, 7–10 days from China | 4.5/5 stars average rating | Ships 1k+ units/mo with <1% defect rate | “Love it! Great picture quality for the price.” | 12 sellers on Amazon, 4 with similar price | Peaks during holidays & back-to-school season |
-
-✅ All products verified via live web search for 2025 sourcing and marketing viability.
+3. Before returning results:
+   - Use `browser.open_url()` to confirm any direct product link works and loads correctly.
+   - If the link fails, **mark it as ❌ Broken** and swap it out.
 
 ---
 
-### 🧪 **Validation Hooks:**
-- No repeated or out-of-stock items  
-- Trend risk level based on virality recency, saturation, or seasonality  
-- If a supplier yields nothing viable, state that briefly and skip it
+### ✅ For Each Product, Return:
+- **Product Name**
+- **Supplier Name**
+- **Valid URL** (search or product page that loads)
+- **Search Query Used**
+- **Why It's Trending** (with source & date)
+- **Suggested Marketing Hook** (1 sentence)
+- **Profit Margin Calculation** (e.g. buy $15, sell $45 → 200%)
 
 ---
 
-### ⚠️ **Constraints:**
-- Do **not invent** or simulate product ideas  
-- Avoid saturated, branded, or counterfeit items  
-- Clarify any assumptions made in the selection process
+### 💡 Example Format
+
+**Product 1:**  
+• Name: Mini Smart Projector  
+• Supplier: AliExpress  
+• URL: https://www.aliexpress.com/wholesale?SearchText=mini+smart+projector  
+• Search Query: `site:aliexpress.com mini projector trending 2025`  
+• Trending: TikTok 520K views (May 2025, source: TikTok search)  
+• Marketing Hook: “Turn any wall into a movie theater!”  
+• Margin: Buy for $32, sell for $89 → (89–32)/32×100 = **178%**
 
 ---
 
-### 🔄 **Optional Follow-Up:**
-After completion, suggest **2 ways** the list could be improved with:
-- More time  
-- Customer feedback  
-- Access to historical sales data
+### ⚠️ Constraints
+- Do not invent products or URLs  
+- Do not return broken links  
+- Avoid branded, saturated, or counterfeit items  
+
 ```
