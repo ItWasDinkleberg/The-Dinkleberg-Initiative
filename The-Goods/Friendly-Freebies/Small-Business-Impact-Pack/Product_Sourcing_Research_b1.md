@@ -48,7 +48,7 @@ Products must be sourced from:
 
 3. For each product, provide:
    - Product Name  
-   - Direct Supplier Link  
+   - Direct Supplier Link (**Always** provide)
    - Suggested Niche/Market
    - Key Features (3 per product)
    - Reason it is trending (brief)  
@@ -76,6 +76,7 @@ Products must be sourced from:
 - Do **not invent** or simulate product ideas  
 - Avoid saturated, branded, or counterfeit items  
 - Clarify any assumptions made in the selection process
+- Do **NOT** use "AliExpress Various Sellers" or "AliExpress Custom Sellers" as an output
 
 ---
 
