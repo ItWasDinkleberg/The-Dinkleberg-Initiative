@@ -49,6 +49,8 @@ Products must be sourced from:
 3. For each product, provide:
    - Product Name  
    - Direct Supplier Link  
+   - Suggested Niche/Market
+   - Key Features (3 per product)
    - Reason it is trending (brief)  
    - Suggested Marketing Hook (1–2 sentences)  
    - Trend Risk Level (Low / Moderate / High)
