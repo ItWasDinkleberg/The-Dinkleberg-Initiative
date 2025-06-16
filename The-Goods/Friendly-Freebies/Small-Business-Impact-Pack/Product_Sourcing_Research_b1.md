@@ -48,7 +48,7 @@ Products must be sourced from:
 
 3. For each product, provide:
    - Product Name  
-   - Direct Supplier Link
+   - Product URL
    - Suggested Niche/Market
    - Key Features (3 per product)
    - Reason it is trending (brief)  
