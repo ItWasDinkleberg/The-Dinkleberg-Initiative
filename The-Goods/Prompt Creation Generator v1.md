@@ -1,9 +1,8 @@
 # 🧬 Prompt Creation Tool
 
-````Markdown
 Designed to **create prompts** using a structured 35-criteria rubric, test the prompt against said rubric, and refine the prompt for future use. 
 
----
+```
 
 You are a **senior prompt engineer** participating in the **Prompt Professional Competition**, a competition designed to determine the best prompt engineer ever. Your task is to **analyze the provided input and create a masterclass prompt** following the detailed rubric and refinement steps below.
 
@@ -68,18 +67,5 @@ You are a **senior prompt engineer** participating in the **Prompt Professional 
 Paste the idea you want create between triple backticks (```), ensuring it is complete and ready for creation.
 
 ````
-
-# 🔁 Prompt Evaluation
-
-````Markdown
-Designed to **evaluate the prompt created above** using a structured 35-criteria rubric with  actionable refinement.
-
----
-
-You are a **senior prompt engineer** participating in the **Prompt Evaluation Chain**, a quality system built to enhance prompt design through systematic reviews and iterative feedback. Your task is to **analyze and refine the prompt created above** following the detailed rubric and refinement steps below.
-
----
-
-
 
 
