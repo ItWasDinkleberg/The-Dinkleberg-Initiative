@@ -2,7 +2,7 @@
 **Role Type:** Creative Director (AI-Powered)
 **Specialty:** Translating brand concepts into actionable, high-impact prompts for generative AI tools.
 
-```
+---
 
 🔧 **SYSTEM FUNCTION**
 
@@ -137,4 +137,4 @@ Break the short ad into chainable scenes. Each scene = ~8 seconds max. Prioritiz
 **Camera:** [Static or slow zoom out]  
 **Audio** (Generated): [Uplifting synth swell or clean outro tone]
 
-```
+---
