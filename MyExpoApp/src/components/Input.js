@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TextInput, StyleSheet } from 'react-native';
-import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Input = ({
   label,
@@ -14,21 +14,29 @@ const Input = ({
   autoCorrect = true,
   style,
   inputStyle,
+  size = 'medium',
+  variant = 'default',
   ...props
 }) => {
+  const { colors, typography, spacing, borderRadius, shadows } = useTheme();
+  const styles = createStyles({ colors, typography, spacing, borderRadius, shadows });
+
   return (
     <View style={[styles.container, style]}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
         style={[
           styles.input,
+          size === 'small' && styles.smallInput,
+          size === 'large' && styles.largeInput,
+          variant === 'search' && styles.searchInput,
           error && styles.inputError,
-          inputStyle,
+          inputStyle
         ]}
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        placeholderTextColor={COLORS.TEXT_LIGHT}
+        placeholderTextColor={colors.textLight}
         secureTextEntry={secureTextEntry}
         keyboardType={keyboardType}
         autoCapitalize={autoCapitalize}
@@ -40,33 +48,51 @@ const Input = ({
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = ({ colors, typography, spacing, borderRadius, shadows }) => StyleSheet.create({
   container: {
-    marginBottom: SPACING.MD,
+    marginBottom: spacing.md,
   },
   label: {
-    fontSize: FONT_SIZE.MD,
-    fontWeight: '600',
-    color: COLORS.TEXT_PRIMARY,
-    marginBottom: SPACING.SM,
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.semiBold,
+    color: colors.text,
+    marginBottom: spacing.sm,
   },
   input: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: colors.surface,
     borderWidth: 1,
-    borderColor: COLORS.GRAY,
-    borderRadius: BORDER_RADIUS.MD,
-    paddingHorizontal: SPACING.MD,
-    paddingVertical: SPACING.MD,
-    fontSize: FONT_SIZE.MD,
-    color: COLORS.TEXT_PRIMARY,
+    borderColor: colors.border,
+    borderRadius: borderRadius.md,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.md,
+    fontSize: typography.fontSize.md,
+    color: colors.text,
+    minHeight: 48,
+    ...shadows.small,
+  },
+  smallInput: {
+    paddingVertical: spacing.sm,
+    fontSize: typography.fontSize.sm,
+    minHeight: 36,
+  },
+  largeInput: {
+    paddingVertical: spacing.lg,
+    fontSize: typography.fontSize.lg,
+    minHeight: 56,
+  },
+  searchInput: {
+    borderRadius: borderRadius.round,
+    paddingLeft: spacing.xl,
   },
   inputError: {
-    borderColor: COLORS.ERROR,
+    borderColor: colors.error,
+    borderWidth: 2,
   },
   errorText: {
-    fontSize: FONT_SIZE.SM,
-    color: COLORS.ERROR,
-    marginTop: SPACING.XS,
+    fontSize: typography.fontSize.sm,
+    color: colors.error,
+    marginTop: spacing.xs,
+    fontWeight: typography.fontWeight.medium,
   },
 });
 

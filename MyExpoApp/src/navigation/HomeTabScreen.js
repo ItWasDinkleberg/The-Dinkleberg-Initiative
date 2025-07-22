@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
-import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../contexts/ThemeContext';
 
-const HomeTabScreen = ({ onLogout }) => {
+const HomeTabScreen = ({ onLogout, user }) => {
   const navigation = useNavigation();
+  const { colors, typography, spacing, borderRadius, shadows } = useTheme();
 
   const quickActions = [
     { id: 'scanner', title: 'Scan Plant', subtitle: 'Identify flora & fauna', icon: '🔍', screen: 'Scanner' },
@@ -48,6 +49,8 @@ const HomeTabScreen = ({ onLogout }) => {
     }
   };
 
+  const styles = createStyles({ colors, typography, spacing, borderRadius, shadows });
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Header */}
@@ -56,9 +59,17 @@ const HomeTabScreen = ({ onLogout }) => {
           <Text style={styles.title}>🌲 Trail Guardian 🛡️</Text>
           <Text style={styles.subtitle}>Protecting Nature's Pathways</Text>
         </View>
-        <TouchableOpacity style={styles.logoutButton} onPress={onLogout}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
+        <View style={styles.headerActions}>
+          <TouchableOpacity 
+            style={styles.settingsButton} 
+            onPress={() => navigation.navigate('Settings')}
+          >
+            <Text style={styles.settingsIcon}>⚙️</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.logoutButton} onPress={onLogout}>
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       
       {/* Welcome Section */}
@@ -133,185 +144,187 @@ const HomeTabScreen = ({ onLogout }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = ({ colors, typography, spacing, borderRadius, shadows }) => StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.BACKGROUND,
+    backgroundColor: colors.background,
   },
   content: {
-    padding: SPACING.LG,
-    paddingBottom: SPACING.XXL,
+    padding: spacing.lg,
+    paddingBottom: spacing.xxl,
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: SPACING.LG,
+    alignItems: 'flex-start',
+    marginBottom: spacing.lg,
+    backgroundColor: colors.card,
+    padding: spacing.lg,
+    borderRadius: borderRadius.lg,
+    ...shadows.medium,
   },
   headerContent: {
     flex: 1,
+  },
+  headerActions: {
+    flexDirection: 'row',
     alignItems: 'center',
+    gap: spacing.sm,
   },
   title: {
-    fontSize: FONT_SIZE.XXL,
-    fontWeight: 'bold',
-    color: COLORS.PRIMARY,
-    textAlign: 'center',
-    marginBottom: SPACING.SM,
+    fontSize: typography.fontSize.xxl,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.primary,
+    marginBottom: spacing.xs,
   },
   subtitle: {
-    fontSize: FONT_SIZE.MD,
-    color: COLORS.TEXT_SECONDARY,
-    textAlign: 'center',
+    fontSize: typography.fontSize.md,
+    color: colors.textSecondary,
     fontStyle: 'italic',
   },
+  settingsButton: {
+    padding: spacing.sm,
+    borderRadius: borderRadius.sm,
+    backgroundColor: colors.backgroundSecondary,
+  },
+  settingsIcon: {
+    fontSize: typography.fontSize.lg,
+  },
   logoutButton: {
-    backgroundColor: COLORS.ERROR,
-    paddingHorizontal: SPACING.MD,
-    paddingVertical: SPACING.SM,
-    borderRadius: BORDER_RADIUS.SM,
-    position: 'absolute',
-    right: 0,
-    top: 0,
+    backgroundColor: colors.error,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm,
+    borderRadius: borderRadius.sm,
   },
   logoutText: {
-    color: COLORS.WHITE,
-    fontSize: FONT_SIZE.SM,
-    fontWeight: '600',
+    color: colors.textInverse,
+    fontSize: typography.fontSize.sm,
+    fontWeight: typography.fontWeight.semiBold,
   },
   welcomeSection: {
-    backgroundColor: COLORS.WHITE,
-    padding: SPACING.LG,
-    borderRadius: BORDER_RADIUS.MD,
-    marginBottom: SPACING.LG,
-    shadowColor: COLORS.BLACK,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    backgroundColor: colors.card,
+    padding: spacing.lg,
+    borderRadius: borderRadius.lg,
+    marginBottom: spacing.lg,
+    ...shadows.medium,
   },
   welcomeTitle: {
-    fontSize: FONT_SIZE.LG,
-    fontWeight: '600',
-    color: COLORS.PRIMARY,
-    marginBottom: SPACING.SM,
+    fontSize: typography.fontSize.lg,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.sm,
   },
   welcomeText: {
-    fontSize: FONT_SIZE.MD,
-    color: COLORS.TEXT_SECONDARY,
-    lineHeight: 22,
+    fontSize: typography.fontSize.md,
+    color: colors.textSecondary,
+    lineHeight: typography.lineHeight.lg,
   },
   quickActionsContainer: {
-    marginBottom: SPACING.LG,
+    marginBottom: spacing.xl,
   },
   sectionTitle: {
-    fontSize: FONT_SIZE.LG,
-    fontWeight: '600',
-    color: COLORS.PRIMARY,
-    marginBottom: SPACING.MD,
+    fontSize: typography.fontSize.lg,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.md,
   },
   actionsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
+    gap: spacing.md,
   },
   actionCard: {
-    backgroundColor: COLORS.WHITE,
+    backgroundColor: colors.card,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
     width: '48%',
-    padding: SPACING.MD,
-    borderRadius: BORDER_RADIUS.MD,
     alignItems: 'center',
-    marginBottom: SPACING.MD,
-    shadowColor: COLORS.BLACK,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    ...shadows.small,
   },
   actionIcon: {
     fontSize: 32,
-    marginBottom: SPACING.SM,
+    marginBottom: spacing.sm,
   },
   actionTitle: {
-    fontSize: FONT_SIZE.MD,
-    fontWeight: '600',
-    color: COLORS.TEXT_PRIMARY,
-    marginBottom: SPACING.XS,
+    fontSize: typography.fontSize.md,
+    fontWeight: typography.fontWeight.semiBold,
+    color: colors.text,
     textAlign: 'center',
+    marginBottom: spacing.xs,
   },
   actionSubtitle: {
-    fontSize: FONT_SIZE.SM,
-    color: COLORS.TEXT_SECONDARY,
+    fontSize: typography.fontSize.sm,
+    color: colors.textSecondary,
     textAlign: 'center',
   },
   statsSection: {
-    marginBottom: SPACING.LG,
+    backgroundColor: colors.card,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    marginBottom: spacing.xl,
+    ...shadows.medium,
+  },
+  statsTitle: {
+    fontSize: typography.fontSize.lg,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.md,
   },
   statsGrid: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
-  statCard: {
-    backgroundColor: COLORS.WHITE,
-    width: '48%',
-    padding: SPACING.MD,
-    borderRadius: BORDER_RADIUS.MD,
+  statItem: {
     alignItems: 'center',
-    marginBottom: SPACING.SM,
-    shadowColor: COLORS.BLACK,
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
   },
   statNumber: {
-    fontSize: FONT_SIZE.XL,
-    fontWeight: 'bold',
-    color: COLORS.ACCENT,
-    marginBottom: SPACING.XS,
+    fontSize: typography.fontSize.xl,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.primary,
+    marginBottom: spacing.xs,
   },
   statLabel: {
-    fontSize: FONT_SIZE.SM,
-    color: COLORS.TEXT_SECONDARY,
+    fontSize: typography.fontSize.sm,
+    color: colors.textSecondary,
     textAlign: 'center',
   },
   recentActivity: {
-    marginBottom: SPACING.LG,
+    backgroundColor: colors.card,
+    borderRadius: borderRadius.lg,
+    padding: spacing.lg,
+    ...shadows.medium,
   },
-  activityList: {
-    backgroundColor: COLORS.WHITE,
-    borderRadius: BORDER_RADIUS.MD,
-    padding: SPACING.MD,
-    shadowColor: COLORS.BLACK,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+  activityTitle: {
+    fontSize: typography.fontSize.lg,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.text,
+    marginBottom: spacing.md,
   },
   activityItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: SPACING.SM,
+    paddingVertical: spacing.md,
     borderBottomWidth: 1,
-    borderBottomColor: COLORS.GRAY_LIGHT,
+    borderBottomColor: colors.border,
   },
   activityIcon: {
-    fontSize: 20,
-    marginRight: SPACING.MD,
+    fontSize: typography.fontSize.lg,
+    marginRight: spacing.md,
+    width: 24,
+    textAlign: 'center',
   },
-  activityInfo: {
+  activityContent: {
     flex: 1,
   },
-  activityTitle: {
-    fontSize: FONT_SIZE.MD,
-    fontWeight: '500',
-    color: COLORS.TEXT_PRIMARY,
-    marginBottom: SPACING.XS,
+  activityText: {
+    fontSize: typography.fontSize.md,
+    color: colors.text,
+    marginBottom: spacing.xs,
   },
   activityTime: {
-    fontSize: FONT_SIZE.SM,
-    color: COLORS.TEXT_SECONDARY,
+    fontSize: typography.fontSize.sm,
+    color: colors.textSecondary,
   },
 });
 

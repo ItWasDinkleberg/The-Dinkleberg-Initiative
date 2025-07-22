@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import AuthNavigator from './AuthNavigator';
-import TabNavigator from './TabNavigator';
+import MainStackNavigator from './MainStackNavigator';
 import { SplashScreen } from '../screens';
 import { useAuth } from '../hooks/useFirebase';
 import { firebaseMessagingService } from '../services/firebaseMessaging';
@@ -60,8 +60,8 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          <Stack.Screen name="MainTabs">
-            {(props) => <TabNavigator {...props} user={user} />}
+          <Stack.Screen name="Main">
+            {(props) => <MainStackNavigator {...props} user={user} />}
           </Stack.Screen>
         ) : (
           <Stack.Screen name="Auth">

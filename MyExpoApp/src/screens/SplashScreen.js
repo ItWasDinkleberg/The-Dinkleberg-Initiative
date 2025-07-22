@@ -1,10 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
-import { COLORS, FONT_SIZE, SPACING } from '../constants';
+import { useTheme } from '../contexts/ThemeContext';
 
 const { width, height } = Dimensions.get('window');
 
 const SplashScreen = ({ onFinish }) => {
+  const { colors, typography, spacing } = useTheme();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.3)).current;
   const slideAnim = useRef(new Animated.Value(50)).current;
@@ -43,6 +44,8 @@ const SplashScreen = ({ onFinish }) => {
 
     return () => clearTimeout(timer);
   }, [fadeAnim, scaleAnim, slideAnim, onFinish]);
+
+  const styles = createStyles({ colors, typography, spacing });
 
   return (
     <View style={styles.container}>
@@ -93,12 +96,12 @@ const SplashScreen = ({ onFinish }) => {
   );
 };
 
-const styles = StyleSheet.create({
+const createStyles = ({ colors, typography, spacing }) => StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: COLORS.PRIMARY_DARK,
+    backgroundColor: colors.primaryDark,
   },
   backgroundGradient: {
     position: 'absolute',
@@ -106,21 +109,21 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: COLORS.PRIMARY,
+    backgroundColor: colors.primary,
     opacity: 0.8,
   },
   logoContainer: {
-    marginBottom: SPACING.XXL,
+    marginBottom: spacing.xxxl,
     alignItems: 'center',
   },
   logo: {
     width: 120,
     height: 120,
     borderRadius: 60,
-    backgroundColor: COLORS.EARTH_TAN,
+    backgroundColor: colors.secondary,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: COLORS.BLACK,
+    shadowColor: colors.text,
     shadowOffset: {
       width: 0,
       height: 8,
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 15,
     borderWidth: 4,
-    borderColor: COLORS.SECONDARY,
+    borderColor: colors.accent,
     position: 'relative',
   },
   logoIcon: {
@@ -150,16 +153,16 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     alignItems: 'center',
-    paddingHorizontal: SPACING.LG,
+    paddingHorizontal: spacing.lg,
   },
   appName: {
-    fontSize: FONT_SIZE.XXL + 8,
-    fontWeight: 'bold',
-    color: COLORS.WHITE,
+    fontSize: typography.fontSize.xxxl,
+    fontWeight: typography.fontWeight.bold,
+    color: colors.textInverse,
     textAlign: 'center',
-    marginBottom: SPACING.SM,
+    marginBottom: spacing.sm,
     letterSpacing: 2,
-    textShadowColor: COLORS.BLACK,
+    textShadowColor: colors.text,
     textShadowOffset: {
       width: 2,
       height: 2,
@@ -167,8 +170,8 @@ const styles = StyleSheet.create({
     textShadowRadius: 4,
   },
   tagline: {
-    fontSize: FONT_SIZE.MD,
-    color: COLORS.EARTH_TAN,
+    fontSize: typography.fontSize.md,
+    color: colors.accent,
     textAlign: 'center',
     fontStyle: 'italic',
     letterSpacing: 1,
@@ -182,7 +185,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 30,
     height: 30,
-    backgroundColor: COLORS.ACCENT_LIGHT,
+    backgroundColor: colors.accentLight,
     borderRadius: 15,
     opacity: 0.3,
   },

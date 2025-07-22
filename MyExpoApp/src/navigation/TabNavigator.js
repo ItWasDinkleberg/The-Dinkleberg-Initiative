@@ -11,7 +11,8 @@ import {
   OfflineMapScreen,
   PlannerScreen,
   MapScreen,
-  AIScreen
+  AIScreen,
+  SettingsScreen
 } from '../screens';
 import HomeTabScreen from './HomeTabScreen';
 
