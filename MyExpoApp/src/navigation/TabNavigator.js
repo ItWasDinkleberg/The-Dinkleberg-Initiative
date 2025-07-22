@@ -8,7 +8,8 @@ import {
   RoutePlannerScreen, 
   AIAssistantScreen, 
   OfflineMapScreen,
-  PlannerScreen
+  PlannerScreen,
+  MapScreen
 } from '../screens';
 import HomeTabScreen from './HomeTabScreen';
 
@@ -85,7 +86,7 @@ const TabNavigator = ({ onLogout }) => {
       
       <Tab.Screen 
         name="Maps" 
-        component={OfflineMapScreen}
+        component={MapScreen}
         options={{ title: 'Maps' }}
       />
       

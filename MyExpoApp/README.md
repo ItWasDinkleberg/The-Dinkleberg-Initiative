@@ -28,6 +28,7 @@ MyExpoApp/
     │   ├── AIAssistantScreen.js  # AI chat assistance
     │   ├── OfflineMapScreen.js   # Map downloads
     │   ├── PlannerScreen.js      # Trip planning with supplies
+    │   ├── MapScreen.js          # Interactive trail mapping
     │   └── index.js             # Screen exports
     ├── navigation/      # Navigation structure
     │   ├── AppNavigator.js      # Main app navigator
@@ -155,6 +156,20 @@ The Trail Guardian app follows this navigation flow:
 - Local data persistence with AsyncStorage
 - Edit and delete saved plans functionality
 
+### 📍 MapScreen:
+- Interactive trail mapping with react-native-maps
+- Real-time GPS location tracking and display
+- Custom marker placement with 8 different types (Trailhead, Campsite, Water, etc.)
+- Trail planning mode with point-to-point route creation
+- Trail distance calculation and statistics
+- Mock trail overlays for demonstration
+- Marker management with detailed information and deletion
+- Trail saving with difficulty levels and descriptions
+- Portland, OR region as default (trail-rich area)
+- Persistent storage of custom markers and trails
+- Professional map controls and user location centering
+- Comprehensive trail and marker listing interface
+
 ## Navigation Structure
 
 The app uses React Navigation for smooth screen transitions:
@@ -171,7 +186,7 @@ The app uses React Navigation for smooth screen transitions:
 - **🔍 Scanner** - Plant and animal track identification
 - **🗺️ Routes** - Trail planning and route discovery
 - **🤖 AI Help** - AI assistant for trail advice
-- **📍 Maps** - Offline map downloads
+- **📍 Maps** - Interactive trail mapping with location pinning
 - **🗓️ Planner** - Comprehensive trip planning with supplies and weather
 
 ### **Persistent State:**
@@ -188,6 +203,8 @@ The app uses React Navigation for smooth screen transitions:
 - `react-native-screens` - Native screen components
 - `react-native-safe-area-context` - Safe area handling
 - `@react-native-async-storage/async-storage` - Persistent storage
+- `react-native-maps` - Interactive map integration
+- `expo-location` - GPS location services
 
 ## Additional Packages to Consider
 
