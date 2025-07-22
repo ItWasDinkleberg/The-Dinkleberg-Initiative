@@ -9,7 +9,8 @@ import {
   AIAssistantScreen, 
   OfflineMapScreen,
   PlannerScreen,
-  MapScreen
+  MapScreen,
+  AIScreen
 } from '../screens';
 import HomeTabScreen from './HomeTabScreen';
 
@@ -80,7 +81,7 @@ const TabNavigator = ({ onLogout }) => {
       
       <Tab.Screen 
         name="AI" 
-        component={AIAssistantScreen}
+        component={AIScreen}
         options={{ title: 'AI Help' }}
       />
       

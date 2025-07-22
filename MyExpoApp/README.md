@@ -29,6 +29,7 @@ MyExpoApp/
     │   ├── OfflineMapScreen.js   # Map downloads
     │   ├── PlannerScreen.js      # Trip planning with supplies
     │   ├── MapScreen.js          # Interactive trail mapping
+    │   ├── AIScreen.js           # OpenAI-powered survival assistant
     │   └── index.js             # Screen exports
     ├── navigation/      # Navigation structure
     │   ├── AppNavigator.js      # Main app navigator
@@ -59,12 +60,28 @@ MyExpoApp/
    npm install
    ```
 
-2. Start the development server:
+2. **Optional: Configure OpenAI API** (for enhanced AI features):
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env and add your OpenAI API key
+   # Get your API key from: https://platform.openai.com/api-keys
+   OPENAI_API_KEY=your_actual_api_key_here
+   ```
+   
+   **Alternative**: You can also set the API key directly in the app by:
+   - Opening the AI Assistant tab
+   - Tapping the settings gear icon (⚙️)
+   - Entering your OpenAI API key
+   - The app works in "Local Mode" without an API key using pre-programmed responses
+
+3. Start the development server:
    ```bash
    npm start
    ```
 
-3. Run on specific platforms:
+4. Run on specific platforms:
    ```bash
    npm run android  # Android
    npm run ios      # iOS (macOS required)
@@ -170,6 +187,18 @@ The Trail Guardian app follows this navigation flow:
 - Professional map controls and user location centering
 - Comprehensive trail and marker listing interface
 
+### 🤖 AIScreen (Survival Assistant):
+- **OpenAI API Integration**: Real-time AI responses with GPT-3.5-turbo
+- **Local Mode Fallback**: Comprehensive pre-programmed survival responses
+- **Survival-Focused Expertise**: Specialized in wilderness survival and emergency situations
+- **Emergency Quick Questions**: 12 pre-loaded critical survival scenarios
+- **Conversation Persistence**: Chat history saved locally with AsyncStorage
+- **API Key Management**: Secure in-app API key configuration
+- **Professional Responses**: Structured, actionable survival advice with emojis
+- **Specialized Topics**: Water purification, shelter building, fire starting, wildlife encounters
+- **Medical Emergencies**: First aid guidance with professional medical disclaimers
+- **Navigation & Signaling**: Lost hiker protocols and rescue signaling methods
+
 ## Navigation Structure
 
 The app uses React Navigation for smooth screen transitions:
@@ -185,7 +214,7 @@ The app uses React Navigation for smooth screen transitions:
 - **🗣️ Forum** - Community discussions and trail reports
 - **🔍 Scanner** - Plant and animal track identification
 - **🗺️ Routes** - Trail planning and route discovery
-- **🤖 AI Help** - AI assistant for trail advice
+- **🤖 AI Help** - OpenAI-powered survival assistant with emergency guidance
 - **📍 Maps** - Interactive trail mapping with location pinning
 - **🗓️ Planner** - Comprehensive trip planning with supplies and weather
 
@@ -205,6 +234,7 @@ The app uses React Navigation for smooth screen transitions:
 - `@react-native-async-storage/async-storage` - Persistent storage
 - `react-native-maps` - Interactive map integration
 - `expo-location` - GPS location services
+- `openai` - OpenAI API integration for AI assistant
 
 ## Additional Packages to Consider
 
