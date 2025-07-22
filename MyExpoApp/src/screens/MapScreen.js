@@ -17,11 +17,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
 import { Button } from '../components';
 import { generateId } from '../utils';
+import { useUserTrails, useUserMarkers } from '../hooks/useFirebase';
 
 const { width, height } = Dimensions.get('window');
 
 const MapScreen = () => {
   const mapRef = useRef(null);
+  const { trails: firebaseTrails, saveTrail } = useUserTrails();
+  const { markers: firebaseMarkers, saveMarker } = useUserMarkers();
+  
   const [region, setRegion] = useState({
     latitude: 45.5017, // Portland, OR - Trail-rich area
     longitude: -122.6750,

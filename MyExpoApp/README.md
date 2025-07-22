@@ -60,7 +60,19 @@ MyExpoApp/
    npm install
    ```
 
-2. **Optional: Configure OpenAI API** (for enhanced AI features):
+2. **Configure Firebase** (required for data persistence and authentication):
+   
+   **Follow the detailed setup guide in `firebase-setup.md`**
+   
+   Quick setup:
+   ```bash
+   # 1. Create a Firebase project at https://console.firebase.google.com/
+   # 2. Enable Authentication, Firestore, Storage, and Messaging
+   # 3. Copy your Firebase config from Project Settings
+   # 4. Replace the config in src/config/firebase.js
+   ```
+
+3. **Optional: Configure OpenAI API** (for enhanced AI features):
    ```bash
    # Copy the example environment file
    cp .env.example .env
@@ -76,12 +88,12 @@ MyExpoApp/
    - Entering your OpenAI API key
    - The app works in "Local Mode" without an API key using pre-programmed responses
 
-3. Start the development server:
+4. Start the development server:
    ```bash
    npm start
    ```
 
-4. Run on specific platforms:
+5. Run on specific platforms:
    ```bash
    npm run android  # Android
    npm run ios      # iOS (macOS required)
@@ -199,6 +211,53 @@ The Trail Guardian app follows this navigation flow:
 - **Medical Emergencies**: First aid guidance with professional medical disclaimers
 - **Navigation & Signaling**: Lost hiker protocols and rescue signaling methods
 
+## 🔥 Firebase Integration
+
+The Trail Guardian app uses Firebase as its backend infrastructure, providing:
+
+### 🔐 Authentication & User Management:
+- **Email/Password Authentication**: Secure user registration and login
+- **User Profiles**: Comprehensive user data with preferences and statistics
+- **Session Persistence**: Automatic login state management
+- **Password Reset**: Email-based password recovery
+
+### 📊 Cloud Firestore Database:
+- **Real-time Data Sync**: Live updates for forum posts and shared content
+- **Offline Support**: Local caching with automatic sync when online
+- **Scalable Structure**: Optimized collections for trails, markers, forum posts
+- **Security Rules**: Granular access control for user data protection
+
+### 📁 Cloud Storage:
+- **Image Uploads**: Secure storage for plant identification photos
+- **Trail Media**: Photos and documents attached to trails and markers
+- **User Avatars**: Profile picture storage and management
+- **Automatic Compression**: Optimized image sizes for performance
+
+### 🔔 Push Notifications:
+- **Emergency Alerts**: Critical safety notifications for trail conditions
+- **Forum Updates**: Real-time notifications for replies and new posts
+- **Trail Sharing**: Notifications when users share trails with you
+- **Weather Warnings**: Location-based severe weather alerts
+- **Achievement Badges**: Celebrate milestones and accomplishments
+
+### 🌐 Real-time Features:
+- **Live Forum**: Real-time forum post updates and conversations
+- **Collaborative Mapping**: Shared trail planning and marker placement
+- **Activity Feeds**: Live updates on community activities
+- **Presence Indicators**: See when other users are online
+
+### 📱 Cross-Platform Sync:
+- **Multi-Device Access**: Seamless experience across all devices
+- **Cloud Backup**: Automatic backup of all user data
+- **Data Migration**: Easy transfer between devices
+- **Version Control**: Track changes to trails and plans over time
+
+### 🛡️ Data Security:
+- **Encrypted Storage**: All data encrypted at rest and in transit
+- **Privacy Controls**: Granular privacy settings for sharing
+- **GDPR Compliance**: User data management and deletion rights
+- **Audit Logs**: Track access and modifications to sensitive data
+
 ## Navigation Structure
 
 The app uses React Navigation for smooth screen transitions:
@@ -235,6 +294,12 @@ The app uses React Navigation for smooth screen transitions:
 - `react-native-maps` - Interactive map integration
 - `expo-location` - GPS location services
 - `openai` - OpenAI API integration for AI assistant
+- `firebase` - Firebase SDK for authentication and database
+- `@react-native-firebase/app` - Firebase core for React Native
+- `@react-native-firebase/auth` - Firebase Authentication
+- `@react-native-firebase/firestore` - Cloud Firestore database
+- `@react-native-firebase/messaging` - Push notifications
+- `@react-native-firebase/storage` - Cloud Storage for files
 
 ## Additional Packages to Consider
 

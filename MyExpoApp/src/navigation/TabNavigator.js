@@ -2,6 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
+import { useAuth } from '../hooks/useFirebase';
 import { 
   ForumScreen, 
   ScannerScreen, 
@@ -16,14 +17,28 @@ import HomeTabScreen from './HomeTabScreen';
 
 const Tab = createBottomTabNavigator();
 
-const TabNavigator = ({ onLogout }) => {
+const TabNavigator = ({ user }) => {
+  const { signOut } = useAuth();
+
   const handleLogout = () => {
     Alert.alert(
       'Logout',
       'Are you sure you want to logout?',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Logout', style: 'destructive', onPress: onLogout }
+        { 
+          text: 'Logout', 
+          style: 'destructive', 
+          onPress: async () => {
+            try {
+              await signOut();
+              // Navigation will be handled automatically by useAuth hook
+            } catch (error) {
+              console.error('Logout error:', error);
+              Alert.alert('Error', 'Failed to logout. Please try again.');
+            }
+          }
+        }
       ]
     );
   };
@@ -58,7 +73,7 @@ const TabNavigator = ({ onLogout }) => {
         name="Home" 
         options={{ title: 'Home' }}
       >
-        {(props) => <HomeTabScreen {...props} onLogout={handleLogout} />}
+        {(props) => <HomeTabScreen {...props} user={user} onLogout={handleLogout} />}
       </Tab.Screen>
       
       <Tab.Screen 

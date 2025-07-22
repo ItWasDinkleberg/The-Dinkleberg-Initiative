@@ -1,9 +1,14 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, ActivityIndicator, Alert } from 'react-native';
 import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
+import { useForumPosts } from '../hooks/useFirebase';
 
 const ForumScreen = () => {
-  const forumPosts = [
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const { posts, loading, createPost } = useForumPosts(selectedCategory);
+  
+  // Mock data as fallback
+  const mockPosts = [
     {
       id: 1,
       title: "Trail conditions update - Pine Ridge Loop",
@@ -34,26 +39,57 @@ const ForumScreen = () => {
   ];
 
   const categories = ["All", "Trail Reports", "Wildlife", "Questions", "Safety", "Tips"];
+  
+  const handleNewPost = () => {
+    Alert.alert(
+      'New Post',
+      'Create a new forum post',
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { 
+          text: 'Create', 
+          onPress: () => {
+            // In a real implementation, this would open a modal or navigate to a new post screen
+            console.log('Create new post');
+          }
+        }
+      ]
+    );
+  };
+  
+  const displayPosts = posts.length > 0 ? posts : mockPosts;
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>🗣️ Trail Forum</Text>
-        <TouchableOpacity style={styles.newPostButton}>
+        <TouchableOpacity style={styles.newPostButton} onPress={handleNewPost}>
           <Text style={styles.newPostText}>+ New Post</Text>
         </TouchableOpacity>
       </View>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.categoriesContainer}>
         {categories.map((category, index) => (
-          <TouchableOpacity key={index} style={[styles.categoryChip, index === 0 && styles.activeCategoryChip]}>
-            <Text style={[styles.categoryText, index === 0 && styles.activeCategoryText]}>{category}</Text>
+          <TouchableOpacity 
+            key={index} 
+            style={[styles.categoryChip, selectedCategory === category && styles.activeCategoryChip]}
+            onPress={() => setSelectedCategory(category)}
+          >
+            <Text style={[styles.categoryText, selectedCategory === category && styles.activeCategoryText]}>
+              {category}
+            </Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
 
       <ScrollView style={styles.postsContainer}>
-        {forumPosts.map((post) => (
+        {loading && (
+          <View style={styles.loadingContainer}>
+            <ActivityIndicator color={COLORS.PRIMARY} />
+            <Text style={styles.loadingText}>Loading posts...</Text>
+          </View>
+        )}
+        {displayPosts.map((post) => (
           <TouchableOpacity key={post.id} style={styles.postCard}>
             <View style={styles.postHeader}>
               <View style={styles.categoryBadge}>
@@ -189,6 +225,17 @@ const styles = StyleSheet.create({
   postReplies: {
     fontSize: FONT_SIZE.SM,
     color: COLORS.TEXT_LIGHT,
+  },
+  loadingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: SPACING.XL,
+  },
+  loadingText: {
+    marginLeft: SPACING.SM,
+    fontSize: FONT_SIZE.MD,
+    color: COLORS.TEXT_SECONDARY,
   },
 });
 

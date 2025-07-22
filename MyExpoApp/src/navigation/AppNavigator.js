@@ -6,47 +6,38 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import AuthNavigator from './AuthNavigator';
 import TabNavigator from './TabNavigator';
 import { SplashScreen } from '../screens';
+import { useAuth } from '../hooks/useFirebase';
+import { firebaseMessagingService } from '../services/firebaseMessaging';
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { user, loading } = useAuth();
   const [showOnboarding, setShowOnboarding] = useState(false);
+  const [splashVisible, setSplashVisible] = useState(true);
 
   useEffect(() => {
-    checkAuthStatus();
+    checkOnboardingStatus();
+    // Show splash screen for at least 2 seconds
+    setTimeout(() => {
+      setSplashVisible(false);
+    }, 2000);
   }, []);
 
-  const checkAuthStatus = async () => {
+  useEffect(() => {
+    // Initialize messaging when user is authenticated
+    if (user) {
+      firebaseMessagingService.initializePushNotifications(user.uid);
+    }
+  }, [user]);
+
+  const checkOnboardingStatus = async () => {
     try {
       // Check if user has seen onboarding
       const hasSeenOnboarding = await AsyncStorage.getItem('hasSeenOnboarding');
-      
-      // Check if user is authenticated
-      const userToken = await AsyncStorage.getItem('userToken');
-      
       setShowOnboarding(!hasSeenOnboarding);
-      setIsAuthenticated(!!userToken);
-      
-      // Simulate splash screen duration
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
     } catch (error) {
-      console.log('Error checking auth status:', error);
-      setIsLoading(false);
-    }
-  };
-
-  const handleAuthSuccess = async (userData) => {
-    try {
-      // Store user token and data
-      await AsyncStorage.setItem('userToken', 'user_authenticated');
-      await AsyncStorage.setItem('userData', JSON.stringify(userData));
-      setIsAuthenticated(true);
-    } catch (error) {
-      console.log('Error storing auth data:', error);
+      console.log('Error checking onboarding status:', error);
     }
   };
 
@@ -60,26 +51,17 @@ const AppNavigator = () => {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await AsyncStorage.multiRemove(['userToken', 'userData']);
-      setIsAuthenticated(false);
-      setShowOnboarding(true);
-    } catch (error) {
-      console.log('Error logging out:', error);
-    }
-  };
-
-  if (isLoading) {
+  // Show splash screen while loading or during initial splash duration
+  if (loading || splashVisible) {
     return <SplashScreen />;
   }
 
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        {isAuthenticated ? (
+        {user ? (
           <Stack.Screen name="MainTabs">
-            {(props) => <TabNavigator {...props} onLogout={handleLogout} />}
+            {(props) => <TabNavigator {...props} user={user} />}
           </Stack.Screen>
         ) : (
           <Stack.Screen name="Auth">
@@ -87,7 +69,6 @@ const AppNavigator = () => {
               <AuthNavigator
                 {...props}
                 showOnboarding={showOnboarding}
-                onAuthSuccess={handleAuthSuccess}
                 onOnboardingComplete={handleOnboardingComplete}
               />
             )}

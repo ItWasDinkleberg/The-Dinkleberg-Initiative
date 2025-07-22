@@ -5,7 +5,7 @@ import {
   StyleSheet, 
   TouchableOpacity, 
   ScrollView, 
-  Alert, 
+  Alert,
   Image,
   Modal,
   Dimensions,
@@ -16,6 +16,8 @@ import * as ImagePicker from 'expo-image-picker';
 import * as MediaLibrary from 'expo-media-library';
 import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
 import { Button } from '../components';
+import { usePlantIdentifications } from '../hooks/useFirebase';
+import { firebaseDataService } from '../services/firebaseData';
 
 const { width, height } = Dimensions.get('window');
 
@@ -28,6 +30,8 @@ const ScannerScreen = () => {
   const [cameraPermission, requestCameraPermission] = useCameraPermissions();
   const [mediaPermission, requestMediaPermission] = MediaLibrary.usePermissions();
   const cameraRef = useRef(null);
+  
+  const { identifications, saveIdentification, refreshIdentifications } = usePlantIdentifications();
 
   const recentScans = [
     { 
@@ -125,8 +129,10 @@ const ScannerScreen = () => {
     
     setIsIdentifying(true);
     
-    // Simulate AI identification process
-    setTimeout(() => {
+    try {
+      // Simulate AI identification process
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
       const mockResults = {
         plant: [
           { name: 'Mountain Laurel', confidence: 89, description: 'Evergreen shrub with pink flowers', isEdible: false, isToxic: true },
@@ -140,9 +146,41 @@ const ScannerScreen = () => {
         ]
       };
       
-      setIdentificationResult(mockResults[scanMode]);
+      const results = mockResults[scanMode];
+      setIdentificationResult(results);
+      
+      // Save identification to Firebase (only for plants currently)
+      if (scanMode === 'plant' && results.length > 0) {
+        try {
+          const topResult = results[0];
+          const identificationData = {
+            type: scanMode,
+            species: topResult.name,
+            confidence: topResult.confidence,
+            description: topResult.description,
+            imageUrl: capturedImage, // In production, upload to Firebase Storage first
+            location: null, // Could add GPS location here
+            identifiedAt: new Date(),
+            additionalData: {
+              isEdible: topResult.isEdible,
+              isToxic: topResult.isToxic,
+              allResults: results
+            }
+          };
+          
+          await saveIdentification(identificationData);
+          console.log('Identification saved to Firebase');
+        } catch (error) {
+          console.error('Error saving identification:', error);
+          // Continue without showing error to user
+        }
+      }
+    } catch (error) {
+      console.error('Error during identification:', error);
+      Alert.alert('Error', 'Failed to identify. Please try again.');
+    } finally {
       setIsIdentifying(false);
-    }, 2000);
+    }
   };
 
   const resetCamera = () => {
