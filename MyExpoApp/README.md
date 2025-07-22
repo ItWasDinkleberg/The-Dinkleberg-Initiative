@@ -1,0 +1,312 @@
+# MyExpoApp
+
+A React Native project built with Expo, featuring a clean and organized folder structure.
+
+## Project Structure
+
+```
+MyExpoApp/
+├── App.js                 # Main app component
+├── app.json              # Expo app configuration
+├── package.json          # Dependencies and scripts
+├── assets/               # Static assets
+│   ├── images/          # App icons, photos, illustrations
+│   ├── fonts/           # Custom fonts
+│   └── icons/           # Icon assets
+└── src/                 # Source code
+    ├── components/      # Reusable UI components
+    │   ├── Button.js   # Custom button component
+    │   └── index.js    # Component exports
+    ├── screens/         # Screen components
+    │   ├── SplashScreen.js       # App launch screen
+    │   ├── WelcomeScreen.js      # Onboarding with mission
+    │   ├── LoginScreen.js        # User authentication
+    │   ├── SignupScreen.js       # User registration
+    │   ├── ForumScreen.js        # Community discussions
+    │   ├── ScannerScreen.js      # Plant/track identification
+    │   ├── RoutePlannerScreen.js # Trail planning
+    │   ├── AIAssistantScreen.js  # AI chat assistance
+    │   ├── OfflineMapScreen.js   # Map downloads
+    │   ├── PlannerScreen.js      # Trip planning with supplies
+    │   ├── MapScreen.js          # Interactive trail mapping
+    │   ├── AIScreen.js           # OpenAI-powered survival assistant
+    │   └── index.js             # Screen exports
+    ├── navigation/      # Navigation structure
+    │   ├── AppNavigator.js      # Main app navigator
+    │   ├── AuthNavigator.js     # Authentication flow
+    │   ├── TabNavigator.js      # Bottom tab navigation
+    │   ├── HomeTabScreen.js     # Home dashboard
+    │   └── index.js            # Navigation exports
+    ├── utils/           # Utility functions
+    │   ├── validation.js # Form validation helpers
+    │   ├── helpers.js   # General helper functions
+    │   └── index.js    # Utility exports
+    ├── services/        # API and external services
+    │   └── api.js      # API service class
+    ├── hooks/           # Custom React hooks
+    │   └── useAsyncStorage.js
+    ├── constants/       # App constants
+    │   ├── colors.js   # Color palette
+    │   ├── dimensions.js # Spacing, font sizes
+    │   └── index.js    # Constants exports
+    └── styles/          # Global styles
+        └── globalStyles.js
+```
+
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. **Configure Firebase** (required for data persistence and authentication):
+   
+   **Follow the detailed setup guide in `firebase-setup.md`**
+   
+   Quick setup:
+   ```bash
+   # 1. Create a Firebase project at https://console.firebase.google.com/
+   # 2. Enable Authentication, Firestore, Storage, and Messaging
+   # 3. Copy your Firebase config from Project Settings
+   # 4. Replace the config in src/config/firebase.js
+   ```
+
+3. **Optional: Configure OpenAI API** (for enhanced AI features):
+   ```bash
+   # Copy the example environment file
+   cp .env.example .env
+   
+   # Edit .env and add your OpenAI API key
+   # Get your API key from: https://platform.openai.com/api-keys
+   OPENAI_API_KEY=your_actual_api_key_here
+   ```
+   
+   **Alternative**: You can also set the API key directly in the app by:
+   - Opening the AI Assistant tab
+   - Tapping the settings gear icon (⚙️)
+   - Entering your OpenAI API key
+   - The app works in "Local Mode" without an API key using pre-programmed responses
+
+4. Start the development server:
+   ```bash
+   npm start
+   ```
+
+5. Run on specific platforms:
+   ```bash
+   npm run android  # Android
+   npm run ios      # iOS (macOS required)
+   npm run web      # Web
+   ```
+
+## Folder Structure Explanation
+
+### `/src/components/`
+Reusable UI components that can be used across multiple screens. Each component should be self-contained and reusable.
+
+### `/src/screens/`
+Screen-level components that represent different pages/views in your app. These typically correspond to different routes in your navigation.
+
+### `/src/utils/`
+Utility functions and helper methods that can be used throughout the app. Includes validation, formatting, and other common operations.
+
+### `/src/services/`
+External service integrations like API calls, authentication services, and third-party integrations.
+
+### `/src/hooks/`
+Custom React hooks for shared stateful logic that can be reused across components.
+
+### `/src/constants/`
+App-wide constants including colors, dimensions, API endpoints, and configuration values.
+
+### `/src/styles/`
+Global styles and theme definitions that ensure consistent styling across the app.
+
+### `/assets/`
+Static assets organized by type:
+- `images/`: Photos, illustrations, app icons
+- `fonts/`: Custom font files
+- `icons/`: Icon assets and SVGs
+
+## Development Guidelines
+
+1. **Import Organization**: Use index.js files for cleaner imports
+2. **Component Naming**: Use PascalCase for components
+3. **File Naming**: Use camelCase for utility files, PascalCase for components
+4. **Constants**: Use UPPER_CASE for constants
+5. **Styling**: Prefer global styles for consistency, component-specific styles when needed
+
+## App Flow
+
+The Trail Guardian app follows this navigation flow:
+
+1. **SplashScreen** - App launch with animated logo
+2. **WelcomeScreen** - Mission statement and onboarding
+3. **Authentication** - Login or Signup screens
+4. **HomeScreen** - Main dashboard for trail guardians
+
+### Authentication Flow:
+- Welcome → "Get Started" → Login Screen
+- Login → "Sign Up" → Signup Screen  
+- Successful login/signup → Home Screen
+- Back buttons return to Welcome Screen
+
+## Key Features
+
+### 🌲 WelcomeScreen:
+- Beautiful forest background image
+- Trail Guardian mission statement
+- Feature highlights (monitoring, reports, community)
+- Call-to-action "Get Started" button
+
+### 🔐 Authentication:
+- **LoginScreen**: Email/password with validation
+- **SignupScreen**: Full registration with name, email, password
+- Form validation with error handling
+- Navigation between login and signup
+
+### 🏠 HomeScreen:
+- Welcome message for trail guardians
+- Action buttons for monitoring and reports
+- Statistics cards showing trail data
+- Forest-themed design consistent with app brand
+
+### 🗓️ PlannerScreen:
+- Comprehensive trip planning interface
+- Destination and date selection with duration estimates
+- Time of day planning (5 time slots from early morning to night)
+- Weather condition selection (8 weather types with temperature)
+- Difficulty level selection (Easy, Moderate, Hard, Extreme)
+- Interactive supplies checklist with 10 essential categories
+- Custom supply items with add/remove functionality
+- Emergency contact information storage
+- Additional notes and special considerations
+- Local data persistence with AsyncStorage
+- Edit and delete saved plans functionality
+
+### 📍 MapScreen:
+- Interactive trail mapping with react-native-maps
+- Real-time GPS location tracking and display
+- Custom marker placement with 8 different types (Trailhead, Campsite, Water, etc.)
+- Trail planning mode with point-to-point route creation
+- Trail distance calculation and statistics
+- Mock trail overlays for demonstration
+- Marker management with detailed information and deletion
+- Trail saving with difficulty levels and descriptions
+- Portland, OR region as default (trail-rich area)
+- Persistent storage of custom markers and trails
+- Professional map controls and user location centering
+- Comprehensive trail and marker listing interface
+
+### 🤖 AIScreen (Survival Assistant):
+- **OpenAI API Integration**: Real-time AI responses with GPT-3.5-turbo
+- **Local Mode Fallback**: Comprehensive pre-programmed survival responses
+- **Survival-Focused Expertise**: Specialized in wilderness survival and emergency situations
+- **Emergency Quick Questions**: 12 pre-loaded critical survival scenarios
+- **Conversation Persistence**: Chat history saved locally with AsyncStorage
+- **API Key Management**: Secure in-app API key configuration
+- **Professional Responses**: Structured, actionable survival advice with emojis
+- **Specialized Topics**: Water purification, shelter building, fire starting, wildlife encounters
+- **Medical Emergencies**: First aid guidance with professional medical disclaimers
+- **Navigation & Signaling**: Lost hiker protocols and rescue signaling methods
+
+## 🔥 Firebase Integration
+
+The Trail Guardian app uses Firebase as its backend infrastructure, providing:
+
+### 🔐 Authentication & User Management:
+- **Email/Password Authentication**: Secure user registration and login
+- **User Profiles**: Comprehensive user data with preferences and statistics
+- **Session Persistence**: Automatic login state management
+- **Password Reset**: Email-based password recovery
+
+### 📊 Cloud Firestore Database:
+- **Real-time Data Sync**: Live updates for forum posts and shared content
+- **Offline Support**: Local caching with automatic sync when online
+- **Scalable Structure**: Optimized collections for trails, markers, forum posts
+- **Security Rules**: Granular access control for user data protection
+
+### 📁 Cloud Storage:
+- **Image Uploads**: Secure storage for plant identification photos
+- **Trail Media**: Photos and documents attached to trails and markers
+- **User Avatars**: Profile picture storage and management
+- **Automatic Compression**: Optimized image sizes for performance
+
+### 🔔 Push Notifications:
+- **Emergency Alerts**: Critical safety notifications for trail conditions
+- **Forum Updates**: Real-time notifications for replies and new posts
+- **Trail Sharing**: Notifications when users share trails with you
+- **Weather Warnings**: Location-based severe weather alerts
+- **Achievement Badges**: Celebrate milestones and accomplishments
+
+### 🌐 Real-time Features:
+- **Live Forum**: Real-time forum post updates and conversations
+- **Collaborative Mapping**: Shared trail planning and marker placement
+- **Activity Feeds**: Live updates on community activities
+- **Presence Indicators**: See when other users are online
+
+### 📱 Cross-Platform Sync:
+- **Multi-Device Access**: Seamless experience across all devices
+- **Cloud Backup**: Automatic backup of all user data
+- **Data Migration**: Easy transfer between devices
+- **Version Control**: Track changes to trails and plans over time
+
+### 🛡️ Data Security:
+- **Encrypted Storage**: All data encrypted at rest and in transit
+- **Privacy Controls**: Granular privacy settings for sharing
+- **GDPR Compliance**: User data management and deletion rights
+- **Audit Logs**: Track access and modifications to sensitive data
+
+## Navigation Structure
+
+The app uses React Navigation for smooth screen transitions:
+
+### **Authentication Flow:**
+1. **SplashScreen** → Shows for 2 seconds on app launch
+2. **WelcomeScreen** → Onboarding (shown once per install)
+3. **LoginScreen** ↔ **SignupScreen** → Authentication
+4. **TabNavigator** → Main app with bottom tabs
+
+### **Tab Navigation:**
+- **🏠 Home** - Dashboard with quick actions and recent activity
+- **🗣️ Forum** - Community discussions and trail reports
+- **🔍 Scanner** - Plant and animal track identification
+- **🗺️ Routes** - Trail planning and route discovery
+- **🤖 AI Help** - OpenAI-powered survival assistant with emergency guidance
+- **📍 Maps** - Interactive trail mapping with location pinning
+- **🗓️ Planner** - Comprehensive trip planning with supplies and weather
+
+### **Persistent State:**
+- Uses AsyncStorage for authentication persistence
+- Remembers if user has seen onboarding
+- Maintains login state across app restarts
+
+## Installed Packages
+
+- `expo-linear-gradient` - Gradient overlays for better text readability
+- `@react-navigation/native` - Core navigation library
+- `@react-navigation/native-stack` - Stack navigator for auth flow
+- `@react-navigation/bottom-tabs` - Bottom tab navigation
+- `react-native-screens` - Native screen components
+- `react-native-safe-area-context` - Safe area handling
+- `@react-native-async-storage/async-storage` - Persistent storage
+- `react-native-maps` - Interactive map integration
+- `expo-location` - GPS location services
+- `openai` - OpenAI API integration for AI assistant
+- `firebase` - Firebase SDK for authentication and database
+- `@react-native-firebase/app` - Firebase core for React Native
+- `@react-native-firebase/auth` - Firebase Authentication
+- `@react-native-firebase/firestore` - Cloud Firestore database
+- `@react-native-firebase/messaging` - Push notifications
+- `@react-native-firebase/storage` - Cloud Storage for files
+
+## Additional Packages to Consider
+
+- `@react-navigation/native` - Professional navigation system
+- `@react-native-async-storage/async-storage` - User session persistence
+- `react-native-vector-icons` - Icon library
+- `react-native-gesture-handler` - Enhanced gestures
+- `expo-font` - Custom typography
+- `expo-image-picker` - Trail photo capture
+- `expo-location` - GPS tracking for trails
