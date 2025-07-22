@@ -18,12 +18,22 @@ MyExpoApp/
     │   ├── Button.js   # Custom button component
     │   └── index.js    # Component exports
     ├── screens/         # Screen components
-    │   ├── SplashScreen.js   # App launch screen
-    │   ├── WelcomeScreen.js  # Onboarding with mission
-    │   ├── LoginScreen.js    # User authentication
-    │   ├── SignupScreen.js   # User registration
-    │   ├── HomeScreen.js     # Main dashboard
-    │   └── index.js         # Screen exports
+    │   ├── SplashScreen.js       # App launch screen
+    │   ├── WelcomeScreen.js      # Onboarding with mission
+    │   ├── LoginScreen.js        # User authentication
+    │   ├── SignupScreen.js       # User registration
+    │   ├── ForumScreen.js        # Community discussions
+    │   ├── ScannerScreen.js      # Plant/track identification
+    │   ├── RoutePlannerScreen.js # Trail planning
+    │   ├── AIAssistantScreen.js  # AI chat assistance
+    │   ├── OfflineMapScreen.js   # Map downloads
+    │   └── index.js             # Screen exports
+    ├── navigation/      # Navigation structure
+    │   ├── AppNavigator.js      # Main app navigator
+    │   ├── AuthNavigator.js     # Authentication flow
+    │   ├── TabNavigator.js      # Bottom tab navigation
+    │   ├── HomeTabScreen.js     # Home dashboard
+    │   └── index.js            # Navigation exports
     ├── utils/           # Utility functions
     │   ├── validation.js # Form validation helpers
     │   ├── helpers.js   # General helper functions
@@ -131,9 +141,38 @@ The Trail Guardian app follows this navigation flow:
 - Statistics cards showing trail data
 - Forest-themed design consistent with app brand
 
+## Navigation Structure
+
+The app uses React Navigation for smooth screen transitions:
+
+### **Authentication Flow:**
+1. **SplashScreen** → Shows for 2 seconds on app launch
+2. **WelcomeScreen** → Onboarding (shown once per install)
+3. **LoginScreen** ↔ **SignupScreen** → Authentication
+4. **TabNavigator** → Main app with bottom tabs
+
+### **Tab Navigation:**
+- **🏠 Home** - Dashboard with quick actions and recent activity
+- **🗣️ Forum** - Community discussions and trail reports
+- **🔍 Scanner** - Plant and animal track identification
+- **🗺️ Routes** - Trail planning and route discovery
+- **🤖 AI Help** - AI assistant for trail advice
+- **📍 Maps** - Offline map downloads
+
+### **Persistent State:**
+- Uses AsyncStorage for authentication persistence
+- Remembers if user has seen onboarding
+- Maintains login state across app restarts
+
 ## Installed Packages
 
 - `expo-linear-gradient` - Gradient overlays for better text readability
+- `@react-navigation/native` - Core navigation library
+- `@react-navigation/native-stack` - Stack navigator for auth flow
+- `@react-navigation/bottom-tabs` - Bottom tab navigation
+- `react-native-screens` - Native screen components
+- `react-native-safe-area-context` - Safe area handling
+- `@react-native-async-storage/async-storage` - Persistent storage
 
 ## Additional Packages to Consider
 

@@ -14,7 +14,7 @@ import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
 import { Button } from '../components';
 import { validateEmail } from '../utils';
 
-const LoginScreen = ({ onLogin, onNavigateToSignup, onBack }) => {
+const LoginScreen = ({ onLogin, onNavigateToSignup, onBack, navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});

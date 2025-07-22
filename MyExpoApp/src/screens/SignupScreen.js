@@ -14,7 +14,7 @@ import { COLORS, FONT_SIZE, SPACING, BORDER_RADIUS } from '../constants';
 import { Button } from '../components';
 import { validateEmail, validatePassword } from '../utils';
 
-const SignupScreen = ({ onSignup, onNavigateToLogin, onBack }) => {
+const SignupScreen = ({ onSignup, onNavigateToLogin, onBack, navigation }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

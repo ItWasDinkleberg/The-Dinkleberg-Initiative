@@ -14,7 +14,16 @@ import { Button } from '../components';
 
 const { width, height } = Dimensions.get('window');
 
-const WelcomeScreen = ({ onGetStarted }) => {
+const WelcomeScreen = ({ onGetStarted, navigation }) => {
+  
+  const handleGetStarted = () => {
+    if (onGetStarted) {
+      onGetStarted();
+    }
+    if (navigation) {
+      navigation.navigate('Login');
+    }
+  };
   return (
     <ImageBackground
       source={{
@@ -68,7 +77,7 @@ const WelcomeScreen = ({ onGetStarted }) => {
           <View style={styles.actionSection}>
             <Button
               title="Get Started"
-              onPress={onGetStarted}
+              onPress={handleGetStarted}
               style={styles.getStartedButton}
               textStyle={styles.getStartedButtonText}
             />
