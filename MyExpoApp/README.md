@@ -27,6 +27,7 @@ MyExpoApp/
     │   ├── RoutePlannerScreen.js # Trail planning
     │   ├── AIAssistantScreen.js  # AI chat assistance
     │   ├── OfflineMapScreen.js   # Map downloads
+    │   ├── PlannerScreen.js      # Trip planning with supplies
     │   └── index.js             # Screen exports
     ├── navigation/      # Navigation structure
     │   ├── AppNavigator.js      # Main app navigator
@@ -141,6 +142,19 @@ The Trail Guardian app follows this navigation flow:
 - Statistics cards showing trail data
 - Forest-themed design consistent with app brand
 
+### 🗓️ PlannerScreen:
+- Comprehensive trip planning interface
+- Destination and date selection with duration estimates
+- Time of day planning (5 time slots from early morning to night)
+- Weather condition selection (8 weather types with temperature)
+- Difficulty level selection (Easy, Moderate, Hard, Extreme)
+- Interactive supplies checklist with 10 essential categories
+- Custom supply items with add/remove functionality
+- Emergency contact information storage
+- Additional notes and special considerations
+- Local data persistence with AsyncStorage
+- Edit and delete saved plans functionality
+
 ## Navigation Structure
 
 The app uses React Navigation for smooth screen transitions:
@@ -158,6 +172,7 @@ The app uses React Navigation for smooth screen transitions:
 - **🗺️ Routes** - Trail planning and route discovery
 - **🤖 AI Help** - AI assistant for trail advice
 - **📍 Maps** - Offline map downloads
+- **🗓️ Planner** - Comprehensive trip planning with supplies and weather
 
 ### **Persistent State:**
 - Uses AsyncStorage for authentication persistence

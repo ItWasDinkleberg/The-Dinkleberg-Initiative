@@ -7,6 +7,7 @@ export { default as ScannerScreen } from './ScannerScreen';
 export { default as RoutePlannerScreen } from './RoutePlannerScreen';
 export { default as AIAssistantScreen } from './AIAssistantScreen';
 export { default as OfflineMapScreen } from './OfflineMapScreen';
+export { default as PlannerScreen } from './PlannerScreen';
 
 // Add more screen exports here as you create them
 // export { default as ProfileScreen } from './ProfileScreen';

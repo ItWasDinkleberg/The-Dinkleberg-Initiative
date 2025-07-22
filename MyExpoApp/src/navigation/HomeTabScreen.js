@@ -8,9 +8,9 @@ const HomeTabScreen = ({ onLogout }) => {
 
   const quickActions = [
     { id: 'scanner', title: 'Scan Plant', subtitle: 'Identify flora & fauna', icon: '🔍', screen: 'Scanner' },
-    { id: 'planner', title: 'Plan Route', subtitle: 'Find perfect trails', icon: '🗺️', screen: 'Routes' },
+    { id: 'routes', title: 'Find Routes', subtitle: 'Discover trails', icon: '🗺️', screen: 'Routes' },
+    { id: 'planner', title: 'Plan Trip', subtitle: 'Organize your hike', icon: '🗓️', screen: 'Planner' },
     { id: 'ai', title: 'Ask AI', subtitle: 'Get trail advice', icon: '🤖', screen: 'AI' },
-    { id: 'maps', title: 'Offline Maps', subtitle: 'Download for later', icon: '📍', screen: 'Maps' },
   ];
 
   const recentActivities = [

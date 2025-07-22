@@ -7,7 +7,8 @@ import {
   ScannerScreen, 
   RoutePlannerScreen, 
   AIAssistantScreen, 
-  OfflineMapScreen 
+  OfflineMapScreen,
+  PlannerScreen
 } from '../screens';
 import HomeTabScreen from './HomeTabScreen';
 
@@ -87,6 +88,12 @@ const TabNavigator = ({ onLogout }) => {
         component={OfflineMapScreen}
         options={{ title: 'Maps' }}
       />
+      
+      <Tab.Screen 
+        name="Planner" 
+        component={PlannerScreen}
+        options={{ title: 'Planner' }}
+      />
     </Tab.Navigator>
   );
 };
@@ -105,6 +112,8 @@ const getTabIcon = (routeName) => {
       return '🤖';
     case 'Maps':
       return '📍';
+    case 'Planner':
+      return '🗓️';
     default:
       return '🏠';
   }
