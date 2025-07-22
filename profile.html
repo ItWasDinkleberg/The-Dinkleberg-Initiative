@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Trail Guardian</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-mountain"></i>
+                    <span>Trail Guardian</span>
+                </a>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#tools" class="nav-link">Tools</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="maps.html" class="nav-link">Maps</a>
+                <a href="radio.html" class="nav-link">Radio</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="profile-btn active">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar" id="profileAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h1 id="profileName">Trail Explorer</h1>
+                    <p id="profileEmail">explorer@trailguardian.com</p>
+                    <div class="profile-badges">
+                        <span class="badge" id="experienceBadge">Beginner</span>
+                        <span class="badge member-since">Member since <span id="memberSince">2024</span></span>
+                    </div>
+                </div>
+                <button class="btn btn-outline edit-profile-btn" onclick="toggleEditMode()">
+                    <i class="fas fa-edit"></i>
+                    Edit Profile
+                </button>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-sidebar">
+                    <nav class="profile-nav">
+                        <a href="#overview" class="profile-nav-link active" data-tab="overview">
+                            <i class="fas fa-chart-line"></i>
+                            Overview
+                        </a>
+                        <a href="#account" class="profile-nav-link" data-tab="account">
+                            <i class="fas fa-user-cog"></i>
+                            Account Settings
+                        </a>
+                        <a href="#preferences" class="profile-nav-link" data-tab="preferences">
+                            <i class="fas fa-sliders-h"></i>
+                            Preferences
+                        </a>
+                        <a href="#activity" class="profile-nav-link" data-tab="activity">
+                            <i class="fas fa-history"></i>
+                            Activity History
+                        </a>
+                        <a href="#waitlist" class="profile-nav-link" data-tab="waitlist">
+                            <i class="fas fa-bell"></i>
+                            Waitlist <span class="waitlist-count" id="waitlistCount">0</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="profile-content-area">
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview">
+                        <h2>Overview</h2>
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-route"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>0</h3>
+                                    <p>Adventures Planned</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>0</h3>
+                                    <p>Photos Scanned</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>0</h3>
+                                    <p>AI Questions Asked</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>0</h3>
+                                    <p>Community Posts</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item welcome">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-mountain"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h4>Welcome to Trail Guardian!</h4>
+                                        <p>Your adventure begins now. Explore our tools to plan your next outdoor journey.</p>
+                                        <span class="activity-time" id="welcomeTime">Just now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Account Settings Tab -->
+                    <div class="tab-content" id="account">
+                        <h2>Account Settings</h2>
+                        <form class="profile-form" id="accountForm">
+                            <div class="form-section">
+                                <h3>Personal Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="editFirstName">First Name</label>
+                                        <input type="text" id="editFirstName" name="firstName" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="editLastName">Last Name</label>
+                                        <input type="text" id="editLastName" name="lastName" disabled>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editEmail">Email Address</label>
+                                    <input type="email" id="editEmail" name="email" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="editExperience">Experience Level</label>
+                                    <select id="editExperience" name="experience" disabled>
+                                        <option value="beginner">Beginner</option>
+                                        <option value="intermediate">Intermediate</option>
+                                        <option value="advanced">Advanced</option>
+                                        <option value="expert">Expert</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Password</h3>
+                                <button type="button" class="btn btn-outline" onclick="showComingSoon('Password Change', 'Password management functionality coming soon!')">
+                                    Change Password
+                                </button>
+                            </div>
+
+                            <div class="form-actions" id="accountFormActions" style="display: none;">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="button" class="btn btn-outline" onclick="cancelEdit()">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Preferences Tab -->
+                    <div class="tab-content" id="preferences">
+                        <h2>Preferences</h2>
+                        <form class="profile-form" id="preferencesForm">
+                            <div class="form-section">
+                                <h3>Notifications</h3>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="emailNotifications" checked>
+                                        <span class="checkmark"></span>
+                                        Email notifications for new features
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="safetyAlerts" checked>
+                                        <span class="checkmark"></span>
+                                        Safety alerts and weather warnings
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="communityUpdates">
+                                        <span class="checkmark"></span>
+                                        Community forum updates
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3>Privacy</h3>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="profileVisibility" checked>
+                                        <span class="checkmark"></span>
+                                        Make profile visible to other users
+                                    </label>
+                                </div>
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" id="activityTracking" checked>
+                                        <span class="checkmark"></span>
+                                        Allow activity tracking for personalized recommendations
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">Save Preferences</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Activity History Tab -->
+                    <div class="tab-content" id="activity">
+                        <h2>Activity History</h2>
+                        <div class="activity-filters">
+                            <button class="filter-btn active" data-filter="all">All Activity</button>
+                            <button class="filter-btn" data-filter="tools">Tool Usage</button>
+                            <button class="filter-btn" data-filter="community">Community</button>
+                            <button class="filter-btn" data-filter="account">Account</button>
+                        </div>
+                        <div class="activity-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-date">Today</div>
+                                <div class="timeline-content">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">
+                                            <i class="fas fa-user-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <h4>Account Created</h4>
+                                            <p>Welcome to Trail Guardian! Your outdoor adventure journey begins.</p>
+                                            <span class="activity-time" id="joinTime">A few moments ago</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Waitlist Tab -->
+                    <div class="tab-content" id="waitlist">
+                        <h2>Feature Waitlist</h2>
+                        <p>You're on the waitlist for these upcoming features:</p>
+                        <div class="waitlist-items" id="waitlistItems">
+                            <div class="empty-state">
+                                <i class="fas fa-bell-slash"></i>
+                                <h3>No waitlist items</h3>
+                                <p>You haven't joined any feature waitlists yet. Check out our tools to see what's coming soon!</p>
+                                <a href="index.html#tools" class="btn btn-primary">Explore Tools</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail Guardian - Your Outdoor Adventure Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i>
+                <span>Trail Guardian</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#tools" class="nav-link">Tools</a>
+                <a href="community.html" class="nav-link">Community</a>
+                <a href="maps.html" class="nav-link">Maps</a>
+                <a href="radio.html" class="nav-link">Radio</a>
+            </nav>
+            <div class="nav-actions">
+                <button class="profile-btn" onclick="openProfile()">
+                    <i class="fas fa-user-circle"></i>
+                </button>
+                <button class="menu-toggle" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your Ultimate Outdoor Adventure Companion</h1>
+            <p>Navigate, survive, and explore with confidence using professional-grade outdoor tools and AI-powered assistance.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="scrollToTools()">
+                    <i class="fas fa-compass"></i>
+                    Explore Tools
+                </button>
+                <button class="btn btn-secondary" onclick="openSurvivalBot()">
+                    <i class="fas fa-robot"></i>
+                    AI Assistant
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety Tips Carousel -->
+    <section class="safety-carousel">
+        <div class="container">
+            <h2><i class="fas fa-shield-alt"></i> Essential Safety Tips</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="safety-card active">
+                        <div class="card-icon"><i class="fas fa-first-aid"></i></div>
+                        <h3>First Aid Basics</h3>
+                        <p>Always carry a well-stocked first aid kit and know how to treat common injuries like cuts, sprains, and hypothermia.</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="card-icon"><i class="fas fa-route"></i></div>
+                        <h3>Leave No Trace</h3>
+                        <p>Plan ahead, stay on trails, dispose of waste properly, and leave what you find to preserve nature for others.</p>
+                    </div>
+                    <div class="safety-card">
+                        <div class="card-icon"><i class="fas fa-satellite-dish"></i></div>
+                        <h3>Emergency Communication</h3>
+                        <p>Inform someone of your plans, carry emergency communication devices, and know how to signal for help.</p>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="previousSlide()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next" onclick="nextSlide()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section" id="tools">
+        <div class="container">
+            <h2><i class="fas fa-toolbox"></i> Adventure Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-card" onclick="openPhotoScanner()">
+                    <div class="tool-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3>Photo Scanner</h3>
+                    <p>Identify plants and animal tracks with AI-powered image recognition</p>
+                    <span class="tool-badge">AI Powered</span>
+                </div>
+
+                <div class="tool-card" onclick="openSurvivalBot()">
+                    <div class="tool-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Survival Assistant</h3>
+                    <p>Get expert survival advice from our AI chatbot trained on wilderness knowledge</p>
+                    <span class="tool-badge">AI Chat</span>
+                </div>
+
+                <div class="tool-card" onclick="openPlanningStation()">
+                    <div class="tool-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Planning Station</h3>
+                    <p>Plan routes, manage supplies, and prepare for your outdoor adventures</p>
+                    <span class="tool-badge">Planning</span>
+                </div>
+
+                <div class="tool-card" onclick="openMaps()">
+                    <div class="tool-icon">
+                        <i class="fas fa-map"></i>
+                    </div>
+                    <h3>Interactive Maps</h3>
+                    <p>Access detailed topographic maps with offline capabilities</p>
+                    <span class="tool-badge">Navigation</span>
+                </div>
+
+                <div class="tool-card" onclick="openRadio()">
+                    <div class="tool-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h3>Radio Tools</h3>
+                    <p>Emergency communication and frequency management tools</p>
+                    <span class="tool-badge">Communication</span>
+                </div>
+
+                <div class="tool-card" onclick="openCommunity()">
+                    <div class="tool-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community</h3>
+                    <p>Connect with fellow adventurers and share experiences</p>
+                    <span class="tool-badge">Social</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
