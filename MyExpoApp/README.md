@@ -18,8 +18,12 @@ MyExpoApp/
     │   ├── Button.js   # Custom button component
     │   └── index.js    # Component exports
     ├── screens/         # Screen components
-    │   ├── HomeScreen.js
-    │   └── index.js    # Screen exports
+    │   ├── SplashScreen.js   # App launch screen
+    │   ├── WelcomeScreen.js  # Onboarding with mission
+    │   ├── LoginScreen.js    # User authentication
+    │   ├── SignupScreen.js   # User registration
+    │   ├── HomeScreen.js     # Main dashboard
+    │   └── index.js         # Screen exports
     ├── utils/           # Utility functions
     │   ├── validation.js # Form validation helpers
     │   ├── helpers.js   # General helper functions
@@ -92,11 +96,51 @@ Static assets organized by type:
 4. **Constants**: Use UPPER_CASE for constants
 5. **Styling**: Prefer global styles for consistency, component-specific styles when needed
 
+## App Flow
+
+The Trail Guardian app follows this navigation flow:
+
+1. **SplashScreen** - App launch with animated logo
+2. **WelcomeScreen** - Mission statement and onboarding
+3. **Authentication** - Login or Signup screens
+4. **HomeScreen** - Main dashboard for trail guardians
+
+### Authentication Flow:
+- Welcome → "Get Started" → Login Screen
+- Login → "Sign Up" → Signup Screen  
+- Successful login/signup → Home Screen
+- Back buttons return to Welcome Screen
+
+## Key Features
+
+### 🌲 WelcomeScreen:
+- Beautiful forest background image
+- Trail Guardian mission statement
+- Feature highlights (monitoring, reports, community)
+- Call-to-action "Get Started" button
+
+### 🔐 Authentication:
+- **LoginScreen**: Email/password with validation
+- **SignupScreen**: Full registration with name, email, password
+- Form validation with error handling
+- Navigation between login and signup
+
+### 🏠 HomeScreen:
+- Welcome message for trail guardians
+- Action buttons for monitoring and reports
+- Statistics cards showing trail data
+- Forest-themed design consistent with app brand
+
+## Installed Packages
+
+- `expo-linear-gradient` - Gradient overlays for better text readability
+
 ## Additional Packages to Consider
 
-- `@react-navigation/native` - Navigation
-- `@react-native-async-storage/async-storage` - Local storage
-- `react-native-vector-icons` - Icons
-- `react-native-gesture-handler` - Gestures
-- `expo-font` - Custom fonts
-- `expo-image-picker` - Image selection
+- `@react-navigation/native` - Professional navigation system
+- `@react-native-async-storage/async-storage` - User session persistence
+- `react-native-vector-icons` - Icon library
+- `react-native-gesture-handler` - Enhanced gestures
+- `expo-font` - Custom typography
+- `expo-image-picker` - Trail photo capture
+- `expo-location` - GPS tracking for trails
