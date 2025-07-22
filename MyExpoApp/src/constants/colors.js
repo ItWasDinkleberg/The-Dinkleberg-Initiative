@@ -1,14 +1,21 @@
 // Color constants for consistent theming
 export const COLORS = {
-  // Primary colors
-  PRIMARY: '#007AFF',
-  PRIMARY_DARK: '#0056CC',
-  PRIMARY_LIGHT: '#4A9FFF',
+  // Trail Guardian Theme - Dark Green and Earth Tones
+  PRIMARY: '#2D5016', // Dark Forest Green
+  PRIMARY_DARK: '#1A3009', // Darker Forest Green
+  PRIMARY_LIGHT: '#4A7C2A', // Lighter Forest Green
 
-  // Secondary colors
-  SECONDARY: '#5856D6',
-  SECONDARY_DARK: '#3F3E9E',
-  SECONDARY_LIGHT: '#7B7AE0',
+  // Earth tone secondary colors
+  SECONDARY: '#8B4513', // Saddle Brown
+  SECONDARY_DARK: '#654321', // Dark Brown
+  SECONDARY_LIGHT: '#A0522D', // Sienna
+
+  // Nature-inspired accent colors
+  ACCENT: '#228B22', // Forest Green
+  ACCENT_LIGHT: '#32CD32', // Lime Green
+  EARTH_BROWN: '#8B7355', // Burlywood Brown
+  EARTH_TAN: '#D2B48C', // Tan
+  MOSS_GREEN: '#556B2F', // Dark Olive Green
 
   // Neutral colors
   WHITE: '#FFFFFF',
@@ -18,17 +25,17 @@ export const COLORS = {
   GRAY_DARK: '#666666',
 
   // Status colors
-  SUCCESS: '#28A745',
-  WARNING: '#FFC107',
-  ERROR: '#DC3545',
-  INFO: '#17A2B8',
+  SUCCESS: '#228B22',
+  WARNING: '#DAA520',
+  ERROR: '#8B0000',
+  INFO: '#2F4F4F',
 
   // Background colors
-  BACKGROUND: '#F8F9FA',
+  BACKGROUND: '#F0F8F0', // Very light green
   SURFACE: '#FFFFFF',
   
   // Text colors
-  TEXT_PRIMARY: '#212529',
-  TEXT_SECONDARY: '#6C757D',
-  TEXT_LIGHT: '#ADB5BD',
+  TEXT_PRIMARY: '#1A3009',
+  TEXT_SECONDARY: '#556B2F',
+  TEXT_LIGHT: '#8B7355',
 };
