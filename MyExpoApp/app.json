@@ -1,29 +1,51 @@
 {
   "expo": {
-    "name": "MyExpoApp",
-    "slug": "MyExpoApp",
+    "name": "Trail Guardian",
+    "slug": "trail-guardian",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#2D5016"
     },
+    "permissions": [
+      "CAMERA",
+      "MEDIA_LIBRARY",
+      "CAMERA_ROLL"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to identify plants and animal tracks on trails.",
+        "NSPhotoLibraryUsageDescription": "This app accesses your photo library to let you select images for plant and track identification."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#2D5016"
       },
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow Trail Guardian to access your camera to identify plants and animal tracks."
+        }
+      ]
+    ]
   }
 }
